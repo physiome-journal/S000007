@@ -1,0 +1,48 @@
+version: 1
+project:
+  title: >-
+    Computational Modeling of Coupled Energetics and Mechanics in the Rat
+    Ventricular Myocardium
+  authors:
+    - name: Bahador Marzban
+      affiliations:
+        - >-
+          Molecular and Integrative Physiology, University of Michigan, Ann
+          Arbor, Michigan, USA
+    - name: Rachel Lopez
+      affiliations:
+        - >-
+          Molecular and Integrative Physiology, University of Michigan, Ann
+          Arbor, Michigan, USA
+    - name: Daniel A. Beard
+      affiliations:
+        - >-
+          Molecular and Integrative Physiology, University of Michigan, Ann
+          Arbor, Michigan, USA
+      corresponding: true
+      email: beardda@umich.edu
+  keywords:
+    - cardiac energetics
+    - cardiac mechanics
+    - heart failure
+    - mechano-energetic coupling
+    - multi-scale modeling
+  open_access: true
+  license: CC-BY-4.0
+site:
+  projects:
+    - slug: S000007
+      path: .
+  nav: []
+  actions:
+    - title: paper
+      url: Marzban2020PhysiomeS000007.pdf
+      static: true
+    - title: omex
+      url: Marzban2020PhysiomeS000007.omex
+      static: true
+    - title: primary
+      url: https://doi.org/unknown
+  title: >-
+    Computational Modeling of Coupled Energetics and Mechanics in the Rat
+    Ventricular Myocardium
