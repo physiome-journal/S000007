@@ -29,6 +29,9 @@ project:
     - multi-scale modeling
   open_access: true
   license: CC-BY-4.0
+  numbering:
+    heading_2: true
+    heading_3: true
 site:
   projects:
     - slug: S000007
