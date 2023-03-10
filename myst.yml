@@ -5,16 +5,19 @@ project:
     Ventricular Myocardium
   authors:
     - name: Bahador Marzban
+      orcid: 0000-0002-0724-7749
       affiliations:
         - >-
           Molecular and Integrative Physiology, University of Michigan, Ann
           Arbor, Michigan, USA
     - name: Rachel Lopez
+      orcid: 0000-0003-1464-0108
       affiliations:
         - >-
           Molecular and Integrative Physiology, University of Michigan, Ann
           Arbor, Michigan, USA
     - name: Daniel A. Beard
+      orcid: 0000-0003-0974-2353
       affiliations:
         - >-
           Molecular and Integrative Physiology, University of Michigan, Ann
@@ -32,7 +35,13 @@ project:
   numbering:
     heading_2: true
     heading_3: true
+  subject: Original
+  date: 2020/09/24
+  doi: 10.36903/physiome.12964970
 site:
+  title: >-
+    Computational Modeling of Coupled Energetics and Mechanics in the Rat
+    Ventricular Myocardium
   projects:
     - slug: S000007
       path: .
@@ -45,7 +54,4 @@ site:
       url: Marzban2020PhysiomeS000007.omex
       static: true
     - title: primary
-      url: https://doi.org/unknown
-  title: >-
-    Computational Modeling of Coupled Energetics and Mechanics in the Rat
-    Ventricular Myocardium
+      url: https://doi.org/10.1093/function/zqaa018
