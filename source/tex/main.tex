@@ -65,6 +65,10 @@ The resulting integrated model is used to predict the in vivo mechanical functio
 
 \subsection{Model Variables:}
 
+The cellular energy metabolism model is based on the mitochondrial oxidative phosphorylation model of \cite{Bazil2016}. The model is governed by 29 ordinary differential equations governing mitochondrial membrane potential, metabolite species concentrations, and cation (H$^+$, K$^+$, and Mg$^{2+}$) concentrations in the mitochondrial matrix, inter-membrane space, and cytosol. \autoref{tab:1} lists the state variables of the model, with a brief description, units used in the model, and the variable name used in the model codes. The original formulation of the model accounted for reactive oxygen species O$_2^{\cdot -}$ and H$_2$O$_2$, which are ignored here, and thus the model is modified accordingly from \cite{Bazil2016}.
+
+The governing equations for these variables are delineated in \autoref{tab:1}.
+
 \begin{table}[ht]\centering
 \caption{Energetics Model State Variables}\label{tab:1}
 \begin{tabular}{l l l l}
@@ -106,10 +110,6 @@ $\Delta\Psi$    & Mitochondrial membrane potential      & mV & DPsi\_im\_to\_mat
 \bottomrule
 \end{tabular}
 \end{table}
-
-The cellular energy metabolism model is based on the mitochondrial oxidative phosphorylation model of \cite{Bazil2016}. The model is governed by 29 ordinary differential equations governing mitochondrial membrane potential, metabolite species concentrations, and cation (H$^+$, K$^+$, and Mg$^{2+}$) concentrations in the mitochondrial matrix, inter-membrane space, and cytosol. Table~\ref{tab:1} lists the state variables of the model, with a brief description, units used in the model, and the variable name used in the model codes. The original formulation of the model accounted for reactive oxygen species O$_2^{\cdot -}$ and H$_2$O$_2$, which are ignored here, and thus the model is modified accordingly from \cite{Bazil2016}.
-
-The governing equations for these variables are delineated below.
 
 \subsection{Mitochondrial Membrane Potential:}
 
@@ -165,7 +165,7 @@ The governing equations for the cation (H$^+$, K$^+$, and Mg$^{2+}$) concentrati
 
 \subsection{Energetic Model Fluxes:}
 
-The fluxes on the right-hand sides of Equations~(\ref{eq:1},\ref{eq:2},\ref{eq:3}, and \ref{eq:4}) are defined in Table~\ref{tab:2}.
+The fluxes on the right-hand sides of Equations~(\ref{eq:1},\ref{eq:2},\ref{eq:3}, and \ref{eq:4}) are defined in \autoref{tab:2}.
 
 \begin{table}[ht]\centering
 \small
@@ -216,7 +216,7 @@ The mathematical expressions for these fluxes are detailed in \cite{Bazil2016}.
 
 \subsection{Implementation in Multiscale Model:}
 
-The cellular energetics model is implemented in a MATLAB script called {\em EnergeticsModelScript.m}. This script is used to predict cytosolic [ATP], [ADP], [AMP], [Pi], [Cr], and [CrP] at a specified input rate of cytosolic ATP hydrolysis. Input and output arguments for the script are listed below in Tables~\ref{tab:3} and \ref{tab:4}.
+The cellular energetics model is implemented in a MATLAB script called \texttt{EnergeticsModelScript.m}. This script is used to predict cytosolic [ATP], [ADP], [AMP], [Pi], [Cr], and [CrP] at a specified input rate of cytosolic ATP hydrolysis. Input and output arguments for the script are listed below in Tables~\ref{tab:3} and \ref{tab:4}.
 
 \begin{table}[!ht]\centering
 \small
@@ -415,7 +415,7 @@ where the transition from super-relaxed ($U_{SR}$) to non-relaxed ($U_{NR}$) sta
 \begin{equation}
   \frac{dU_{NR}}{dt} = k_{SR} \left( 1 + k_{force}  \sigma_{XB} \right)U_{SR} - k_{-SR}  U_{NR} \, .
 \end{equation}
-where $\sigma_{XB}$, is active contractile force and formulated in equation ~ \ref{eq:activeforce}. 
+where $\sigma_{XB}$, is active contractile force and formulated in equation~\ref{eq:activeforce}. 
 
 \subsection{Overlap function:}
 
@@ -488,7 +488,7 @@ $PExp_{collagen} = 70$ $\mu$m$^{-1}$ is a model parameter and $SL_{collagen} = 2
 
 Certain parameters from the cross-bridge and calcium-activation models of \cite{Tewari2016a,Tewari2016b} and \cite{Campbell2018} were re-estimated to match data from \cite{Janssen2002} on calcium transients and force-generation in isolated rat cardiac trabeculae. In brief, experiments were conducted at 37$^\circ$~C. Calcium transients (\autoref{fig:calcium}) were measured at different stimulation frequencies at fixed sarcomere length SL = 2.2 $\mu$m. Isometric tension time courses were measured at different stimulation frequencies and sarcomere lengths. \autoref{fig:calcium} shows data on peak developed tension ($T_{dev}$) as a function of $SL$ at stimulation frequency of 4~Hz; and data on relaxation time from peak to 50\% of peak tension ($RT50$); peak developed tension ($T_{dev}$) and time to peak tension ($TTP$) as function of $SL$.
 
-Model simulations were fit to these data to estimate unknown parameters in the calcium activation and cross-bridge kinetics components of the model. Specifically, parameters adjusted to values different from those in the original publication are indicated below in Table~\ref{tab:7}.
+Model simulations were fit to these data to estimate unknown parameters in the calcium activation and cross-bridge kinetics components of the model. Specifically, parameters adjusted to values different from those in the original publication are indicated below in \autoref{tab:7}.
 
 \begin{figure}[ht]\centering
 \includegraphics[width=1.0\linewidth]{CrossBridgeParaEstimate.jpg}
@@ -680,7 +680,7 @@ V_{m,\#} &=& \frac{\pi}{6} x_{m,\#} (x_{m,\#}^2 + 3y_{m}^{2}) \nonumber \\
 A_{m,\#} &=& \pi(x_{m,\#}^2 + y_{m}^{2}) \nonumber \\
 C_{m,\#} &=& \frac{2x_{m,\#}}{x_{m,\#}^{2}+y_{m}^{2}} \, . \nonumber
 \end{eqnarray}
-Here $A_{m,\#}$ the midwall surface area of segment \#, $A_{m,ref,\#}$ is a reference midwall surface area, $C_{m,\#}$ is the curvature of the midwall surface, $V_{w,\#}$ is the wall volume of wall segment i, $V_{m,\#}$ is the midwall volume, and $x_{m,\#}$ and $y_{m}$ determine the geometry of the LV and RV cavity (see \cite{Lumens2009}). The four variables of the TriSeg heart model, $x_{m,RV}$ , $x_{m,LV}$, $x_{m,SEP}$, and $y_{m}$ that determine the geometry of the ventricular cavities, are listed in Table~\ref{tab:8}. 
+Here $A_{m,\#}$ the midwall surface area of segment \#, $A_{m,ref,\#}$ is a reference midwall surface area, $C_{m,\#}$ is the curvature of the midwall surface, $V_{w,\#}$ is the wall volume of wall segment i, $V_{m,\#}$ is the midwall volume, and $x_{m,\#}$ and $y_{m}$ determine the geometry of the LV and RV cavity (see \cite{Lumens2009}). The four variables of the TriSeg heart model, $x_{m,RV}$ , $x_{m,LV}$, $x_{m,SEP}$, and $y_{m}$ that determine the geometry of the ventricular cavities, are listed in \autoref{tab:8}. 
 
 \begin{table}[ht]\centering
 \small
@@ -731,7 +731,7 @@ P_{RV} &=& + P_{trans,RV} \nonumber \, .
 \end{eqnarray}
 \subsection{Model Parameters}
 
-Parameters defining the mass and geometry of the heart are identified from data on individual animals are defined in Table~\ref{tab:9}.
+Parameters defining the mass and geometry of the heart are identified from data on individual animals are defined in \autoref{tab:9}.
 
 \begin{table}[ht]\centering
 \small
@@ -776,7 +776,7 @@ where $P_{1} - P_{2}$ is the pressure drop across the element, and R is the resi
     \frac{dP}{dt} =\frac{F_{in} - F_{out}}{C} 
 \end{equation}
 where $F_{in} - F_{out}$ is the rate of change of blood volume in the element.
-Table~\ref{tab:10} lists the variables of the cardiovascular systems model. These variables and Eqs. ~\ref{eq:flow} and ~\ref{eq:dPdT} are invoked in the MATLAB code {\em Cardiovascularmechancis.m}.
+\autoref{tab:10} lists the variables of the cardiovascular systems model. These variables and Eqs. ~\ref{eq:flow} and ~\ref{eq:dPdT} are invoked in the MATLAB code \texttt{Cardiovascularmechancis.m}.
 
 \begin{table}[ht]\centering
 \small
@@ -807,7 +807,7 @@ $P_{SA}$ & Systemic arterial pressure (distal to TAC) & mmHg & P\_SA \\
 
 \subsection{Identification of Model Parameters:}
 
-Table~\ref{tab:11} lists the parameters used in the lumped circulatory model.
+\autoref{tab:11} lists the parameters used in the lumped circulatory model.
 
 \begin{table}[ht]\centering
 \small
@@ -950,12 +950,12 @@ If we assume that roughly 3/4 of the ATP consumed by the cardiomyocyte is consum
 
 The full set of adjustable parameters invoked in the cardiovascular systems model is listed in Table 12. Certain adjustable parameters are set based on direct measurements and others are adjusted so that simulation outputs match measured data. Seven parameter values---$A_{m,ref}^{LW"}$ , $A_{m,ref} ^{SEP}$ , $A_{m,ref}^{RW}$ , $k_{force}$, $k_{SR}$, $R_{sys}$, $R_{TAC}$---are adjusted to fit model predictions to data from individual animals on end-systolic and end-diastolic volumes and estimated pressure drop across the aortic constriction in TAC animals, and to simultaneously maintain a fixed mean arterial pressure of 93.3 mmHg, to maintain end-diastolic sarcomere lengths in the LV, septum, and RV of 2.2 $\mu$m. 
 
-Ranges of estimated values of are listed in Table~\ref{tab:12}. Values of anatomical/geometric parameters representing heart masses and reference areas are higher in TAC rats than in sham control rats, reflecting hypertrophic remodeling.
+Ranges of estimated values of are listed in \autoref{tab:12}. Values of anatomical/geometric parameters representing heart masses and reference areas are higher in TAC rats than in sham control rats, reflecting hypertrophic remodeling.
 The parameters $k_{force}$ and $k_{SR}$ govern the transition out of the inaccessible super-relaxed state in the calcium-activation model. Increased in the values of these parameters represent increased levels of phosphorylation of myosin binding protein C. Thus, the higher values of these parameters in TAC compared to sham animals represent a prediction that phosphorylation of this protein is increased in the TAC animals.
 
 Simulations of TAC rats consistently show lower ATP, ADP, and CrP, reflecting reductions in the total adenine nucleotide and creatine pools. (See below.) Lower ADP levels require a compensatory increase in inorganic phosphate to maintain ATP synthesis. 
 
-The ranges of values of cross-bridge cycle rate, ATP hydrolysis rate, and end-systolic and end-diastolic volumes are listed in Table~\ref{tab:13}. 
+The ranges of values of cross-bridge cycle rate, ATP hydrolysis rate, and end-systolic and end-diastolic volumes are listed in \autoref{tab:13}. 
 
 
 
@@ -997,13 +997,13 @@ MAP & Mean arterial pressure & mmHg & 93.3 for both TAC and sham \\
 \end{supertabular}
 \end{table}
 
-The set of input parameters invoked in the cardiovascular systems model is listed in Table~\ref{tab:3}. The input parameters TAN, CRtot, and Ox\_capacity are all measured for each individual rat. The ATP hydrolysis rate ($x_{ATPase}$) is predicted by the mechanics model (see above). The relationships between metabolite pools from \cite{Gao2019} are used to estimate the total exchangeable phosphate (TEP):
+The set of input parameters invoked in the cardiovascular systems model is listed in \autoref{tab:3}. The input parameters TAN, CRtot, and Ox\_capacity are all measured for each individual rat. The ATP hydrolysis rate ($x_{ATPase}$) is predicted by the mechanics model (see above). The relationships between metabolite pools from \cite{Gao2019} are used to estimate the total exchangeable phosphate (TEP):
 \[
   {\rm TEP} = P_{0} - p ((A_{0} - {\rm TAN} )/ a)
 \]
 where, $P_{0}= 35.446$ mmol$\cdot$(L cell)$^{-1}$,  $A_{0} = 10.26$ mmol$\cdot$(L cell)$^{-1}$, are reference TEP and TAN values, $p = 0.283$mmol$\cdot$(L cell$\cdot$year)$^{-1}$  and $a = 0.082$ mmol$\cdot$(L cell$\cdot$year)$^{-1}$ are the slopes of the relationships between mean TEP and mean TAN and age in humans, respectively. 
 
-Output arguments from the energetics model, including the metabolite levels used in the mechanics model, are listed in Table~\ref{tab:4}.
+Output arguments from the energetics model, including the metabolite levels used in the mechanics model, are listed in \autoref{tab:4}.
 
 \subsection{Predictions associated with changing metabolic/energetic parameterization:}
 
@@ -1038,20 +1038,20 @@ Given these values specifying the metabolic model, the blood volume, $k_{force}$
 
 The simulation package consists of 5 MATLAB files:
 \begin{enumerate}
-    \item CardiovascualarMechanics.m
-    \item dXdT\_CardiovascularMechanics.m
-    \item EnergeticsModelScript.m
-    \item dXdT\_energetics.m
-    \item TrisegEquations.m
+    \item \texttt{CardiovascualarMechanics.m}
+    \item \texttt{dXdT\_CardiovascularMechanics.m}
+    \item \texttt{EnergeticsModelScript.m}
+    \item \texttt{dXdT\_energetics.m}
+    \item \texttt{TrisegEquations.m}
 \end{enumerate}
 
 Values of all adjustable parameters are stored in spreadsheet files ``Adjustable\_paramaters\_table\_rest.xlsx'' for the baseline simulations and ``Adjustable\_parameters\_table\_SWAP.xlsx'' for simulations with replaced metabolic parameters.
 
-The {\em CardiovascularMechanics.m} function is the main driver to run the mechanics model for a given animal. For instance, assigning the variable ``rat\_number'' to 1 will execute simulations for SHAM rat number 1. Executing the script will load the parameters associated with this animal, run the cardiovascular systems model for 120 heart beats to attain a periodic steady state, and then plot the predicted left ventricular pressure, aortic pressure, and arterial pressure along with the left-ventricular pressure volume loop for this individual animal. The target end-diastolic and end-systolic volumes and the pres-sure drop across the TAC will be indicated by dashed lines in the figures. The model will compute the predicted cross-bridge cycling rate in the LV free wall and the associated ATP hydrolysis rate.
+The \texttt{CardiovascularMechanics.m} function is the main driver to run the mechanics model for a given animal. For instance, assigning the variable ``rat\_number'' to 1 will execute simulations for SHAM rat number 1. Executing the script will load the parameters associated with this animal, run the cardiovascular systems model for 120 heart beats to attain a periodic steady state, and then plot the predicted left ventricular pressure, aortic pressure, and arterial pressure along with the left-ventricular pressure volume loop for this individual animal. The target end-diastolic and end-systolic volumes and the pres-sure drop across the TAC will be indicated by dashed lines in the figures. The model will compute the predicted cross-bridge cycling rate in the LV free wall and the associated ATP hydrolysis rate.
 
 The energetics model for a given animal is called within the cardiovascular model. Executing this script will read the metabolic/energetic parameters associated with this animal and run the model to calculate the cytosolic metabolite levels. Note the ATPase hydrolysis rate for steady state is pre-identified and is listed in column 9 of the input adjustable\_parameters\_table\_rest.xlsx. 
 
-The numbering for rats in the input ``data1.xlsx'' file is as follows: the first 8 rats are SHAM rats and rat number 9 is the mean sham rat; rat number 10 to 19 are the TAC rats (TAC rat\# 7 is excluded). Therefore the first TAC rat is rat number 10 in the simulations. For example, to simulate the model for TAC rat \#1 we need assign number 10 to the variable ``rat\_numbers = 10'' in the {\em CardiovascularMehanics.m} and run the code. 
+The numbering for rats in the input ``data1.xlsx'' file is as follows: the first 8 rats are SHAM rats and rat number 9 is the mean sham rat; rat number 10 to 19 are the TAC rats (TAC rat\# 7 is excluded). Therefore the first TAC rat is rat number 10 in the simulations. For example, to simulate the model for TAC rat \#1 we need assign number 10 to the variable ``rat\_numbers = 10'' in the \texttt{CardiovascularMehanics.m} and run the code. 
 
 The model will generate output shown below in \autoref{fig:output}. 
 
@@ -1064,26 +1064,30 @@ In addition to the plots illustrated above, the running the model for this indiv
 
 \subsection{Reproduction of simulations highlighted in original paper}
 
-The procedure detailed above may be followed to reproduce the model fits to data for any of the individual TAC or sham rats analyzed in the original paper. For example, Fig. 7 of the original paper shows model fits to sham rat \#3 and TAC rat \#2. To simulate the model for sham rat \#3 the user assigns the number 3 to the variable ``rat\_numbers = 3'' in the {\em CardiovascularMehanics.m} and runs the code. The resulting model output is equivalent to that presented in Fig. 7 panels A and B of the original paper.
+The procedure detailed above may be followed to reproduce the model fits to data for any of the individual TAC or sham rats analyzed in the original paper. For example, Fig. 7 of the original paper shows model fits to sham rat \#3 and TAC rat \#2. To simulate the model for sham rat \#3 the user assigns the number 3 to the variable ``rat\_numbers = 3'' in the \texttt{CardiovascularMehanics.m} and runs the code. The resulting model output is equivalent to that presented in Fig. 7 panels A and B of the original paper.
 
-To simulate the model for TAC rat \#2 the user assigns the number 11 to the variable ``rat\_numbers = 11'' in the {\em CardiovascularMehanics.m} and runs the code. The resulting model output is equivalent to that presented in Fig. 7 panels C and D of the original paper.
+To simulate the model for TAC rat \#2 the user assigns the number 11 to the variable ``rat\_numbers = 11'' in the \texttt{CardiovascularMehanics.m} and runs the code. The resulting model output is equivalent to that presented in Fig. 7 panels C and D of the original paper.
 
 Fig. 9 of the original paper illustrates the predicted effects of replacing
 the metabolic profile of sham rat with that of at TAC rat, and the predicted effects of replacing the metabolic profile of a TAC rat with that of a sham rat. The solid lines in Fig. 9 of the original paper represent the resting-state simulations from Fig. 7 of the paper. The dashed lines correspond to simulations associated with the metabolite swaps. 
 
-To simulate the model for sham rat \#3 with TAC metabolism settings the user assigns the number 3 to the variable ``rat\_numbers = 3'' in the {\em CardiovascularMehanics.m} and also assigns the number 1 to the variable ``flag\_swap\_metabolite = 1'' and runs the code. The resulting model output is equivalent to that presented in Fig. 9 panels A and B of the original paper. To simulate the model for TAC rat \#2 with sham metabolism settings the user assigns the number 11 to the variable ``rat\_numbers = 11'' in the {\em CardiovascularMehanics.m} and also assigns the number 1 to the variable ``flag\_swap\_metabolite = 1'' and runs the code. The resulting model output is equivalent to that presented in Fig. 9 panels C and D of the original paper.
+To simulate the model for sham rat \#3 with TAC metabolism settings the user assigns the number 3 to the variable ``rat\_numbers = 3'' in the \texttt{CardiovascularMehanics.m} and also assigns the number 1 to the variable ``flag\_swap\_metabolite = 1'' and runs the code. The resulting model output is equivalent to that presented in Fig. 9 panels A and B of the original paper. To simulate the model for TAC rat \#2 with sham metabolism settings the user assigns the number 11 to the variable ``rat\_numbers = 11'' in the \texttt{CardiovascularMehanics.m} and also assigns the number 1 to the variable ``flag\_swap\_metabolite = 1'' and runs the code. The resulting model output is equivalent to that presented in Fig. 9 panels C and D of the original paper.
 
 \section{Glossary of model codes}
 
-\textbf{EnergeticsModelScript.m:} This function is used to compute the cellular energetics concentration variables for the myocardium, given input values of mitochondrial oxidative capacity, TAN, TEP, and CRtot metabolite pool values, and the rate of cellular ATP hydrolysis. The function computes the steady state of the cellular energetics model by simulating the model governed by the differential equations in {\em dXdT\_energetics.m}.
+\begin{description}
 
-\textbf{dXdT\_energetics.m:} This function is an implementation of the \cite{Bazil2016} model of rat myocardial mitochondrial oxidative phosphorylation. The model has 29 state variables, listed in Table~\ref{tab:1}.
+\item[EnergeticsModelScript.m] This function is used to compute the cellular energetics concentration variables for the myocardium, given input values of mitochondrial oxidative capacity, TAN, TEP, and CRtot metabolite pool values, and the rate of cellular ATP hydrolysis. The function computes the steady state of the cellular energetics model by simulating the model governed by the differential equations in \texttt{dXdT\_energetics.m}.
 
-\textbf{Cardiovascularmechanics.m:} This function simulates the pressure and flows in the whole-body cardio-vascular systems model of ~\ref{fig:overview}, governed by the five-compartment lumped-parameter cardiovascular systems model coupled to the Lumens et al. TriSeg heart model. The inputs to the model include the cytosolic metabolite concentrations predicted by {\em EnergeticsModelScript.m}. The outputs of the model are the myocardial ATP hydrolysis rate (used as an input for the energetics model) and the cardiovascular variables, EDLV, ESLV, MAP, rate of ATP cellular hydrolysis, to be compared to measurements for individual rats.
+\item[dXdT\_energetics.m] This function is an implementation of the \cite{Bazil2016} model of rat myocardial mitochondrial oxidative phosphorylation. The model has 29 state variables, listed in \autoref{tab:1}.
 
-\textbf{dXdT\_cardiovascular\_mechanics.m:} This function is an implantation of the whole organ cardiovasucalar mechanics model. The model has 47 state variables listed in Tables~\ref{tab:5}, \ref{tab:8}, and \ref{tab:10}.
+\item[Cardiovascularmechanics.m] This function simulates the pressure and flows in the whole-body cardio-vascular systems model of ~\ref{fig:overview}, governed by the five-compartment lumped-parameter cardiovascular systems model coupled to the Lumens et al. TriSeg heart model. The inputs to the model include the cytosolic metabolite concentrations predicted by \texttt{EnergeticsModelScript.m}. The outputs of the model are the myocardial ATP hydrolysis rate (used as an input for the energetics model) and the cardiovascular variables, EDLV, ESLV, MAP, rate of ATP cellular hydrolysis, to be compared to measurements for individual rats.
 
-\textbf{TriSeg.m:} This function runs the TriSeg model equations to obtain estimates for initial value for ODE solver and the associated algebraic equations.
+\item[dXdT\_cardiovascular\_mechanics.m] This function is an implantation of the whole organ cardiovasucalar mechanics model. The model has 47 state variables listed in Tables~\ref{tab:5}, \ref{tab:8}, and \ref{tab:10}.
+
+\item[TriSeg.m] This function runs the TriSeg model equations to obtain estimates for initial value for ODE solver and the associated algebraic equations.
+
+\end{description}
 
 \bibliography{sample}
 
