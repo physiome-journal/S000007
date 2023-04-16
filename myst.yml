@@ -24,6 +24,22 @@ project:
           Arbor, Michigan, USA
       corresponding: true
       email: beardda@umich.edu
+  editors:
+    - name: David P. Nickerson
+      orcid: 0000-0003-4667-9779
+      role: Editor
+      affiliations:
+        - Auckland Bioengineering Institute, University of Auckland,New Zealand
+    - name: Anand K. Rampadarath
+      orcid: 0000-0001-8830-6212
+      role: Curator
+      affiliations:
+        - Auckland Bioengineering Institute, University of Auckland, New Zealand
+  history:
+    - date: 2020/09/15
+      type: accepted
+    - date: 2020/09/24
+      type: published
   keywords:
     - cardiac energetics
     - cardiac mechanics
