@@ -8,7 +8,7 @@ project:
     ATP synthesis, ATP hydrolysis, and phosphate metabolite kinetics—and
     myocardial mechanics used to analyze data from a rat model of cardiac
     decompensation and failure.
-  thumbnial: thumbnail.png
+  thumbnail: thumbnail.png
   authors:
     - name: Bahador Marzban
       orcid: 0000-0002-0724-7749
