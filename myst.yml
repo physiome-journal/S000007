@@ -64,10 +64,6 @@ site:
   title: >-
     Computational Modeling of Coupled Energetics and Mechanics in the Rat
     Ventricular Myocardium
-  projects:
-    - slug: S000007
-      path: .
-  nav: []
   actions:
     - title: paper
       url: Marzban2020PhysiomeS000007.pdf
@@ -77,3 +73,5 @@ site:
       static: true
     - title: primary
       url: https://doi.org/10.1093/function/zqaa018
+  domains:
+    - physiome-S000007.curve.space
